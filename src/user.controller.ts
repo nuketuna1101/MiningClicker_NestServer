@@ -14,13 +14,4 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string): Promise<User> {
-  //   return this.userService.findOne(+id);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string): Promise<void> {
-  //   return this.userService.remove(+id);
-  // }
 }

@@ -14,7 +14,13 @@ export class AuthService {
     async validateUser(username: string, password: string): Promise<any> {
         const user = await this.usersRepository.findOne({ where: { username } });
         if (user) {
-            const isMatch = await bcrypt.compare(password, user.password);
+            console.log("[AUTH] password: " + typeof password);
+            console.log("[AUTH] user.password: " + typeof user.password);
+            console.log("[AUTH] 1: " + (password == user.password));
+            console.log("[AUTH] 2: " + (password === user.password));
+            // bcrypt 제거 버전
+            // const isMatch = await bcrypt.compare(password, user.password);
+            const isMatch = password == user.password;
             console.log("[AUTH] Password match result:", isMatch);
             if (isMatch) {
                 console.log("[AUTH] validateUser: matched!");
@@ -22,9 +28,6 @@ export class AuthService {
             }
         }
         console.log("[AUTH] validateUser: NOT matched");
-        console.log(username);
-        console.log(password);
-        console.log(user);
-        return null;  // 로그인 실패 시 null 반환
+        return null; 
     }
 }
