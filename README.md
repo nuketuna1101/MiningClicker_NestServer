@@ -97,3 +97,37 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+```cmd
+npm i -g @nestjs/cli
+nest new project-name
+cd project-name
+
+
+npm install --save @nestjs/typeorm typeorm mysql2
+
+```
+
+### 문제 발생
+#### ESLint 와 Prettier 설정 간 불일치 때문에 carriage return 문자 삭제 에러 메시지
+
+
+### 해결
+
+#### (1) .prettier 설정 확인
+{
+  "endOfLine": "lf"
+}
+추가
+
+#### (2) eslintrc 파일 확인
+{
+  "extends": ["plugin:prettier/recommended"],
+  "rules": {
+    "prettier/prettier": ["error", { "endOfLine": "lf" }]
+  }
+}
+
+#### (3) 프로젝트 파일 포맷팅
+npx prettier --write .
+
