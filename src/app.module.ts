@@ -3,12 +3,13 @@
 //=================================================
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from './Authentication/auth.moudle';
+import { AuthModule } from './Authentication/auth.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { User } from './user.entity';
+import { UserAssetsModule } from './UserAssets/assets.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { User } from './user.entity';
     }),
     TypeOrmModule.forFeature([User]),
     AuthModule,
+    UserAssetsModule,
   ],
   controllers: [AppController, UserController],
   providers: [AppService, UserService],
